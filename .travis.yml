@@ -1,4 +1,4 @@
 language: java
 before_script: cd elasticsearch
 script:
-  - ./gradlew build --scan -s
+  - gradle check
