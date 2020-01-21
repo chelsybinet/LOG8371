@@ -1,1 +1,4 @@
 language: java
+script:
+  -  cd elasticsearch/modules/rank-eval
+  - ./gradlew build --scan -s
