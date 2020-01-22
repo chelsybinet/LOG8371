@@ -1,4 +1,6 @@
 language: java
-before_script: cd elasticsearch
+before_script: 
+  - cd elasticsearch
+  - git submodule update --init --recursive
 script:
   - ./gradlew assemble
