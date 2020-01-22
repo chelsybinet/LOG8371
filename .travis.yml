@@ -1,5 +1,2 @@
 language: java
 before_script: cd elasticsearch
-script:
-  - ls
-  - ./gradlew assemble
