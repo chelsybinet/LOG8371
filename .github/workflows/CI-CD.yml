@@ -1,0 +1,36 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Python environment
+      uses: actions/setup-python@v1.1.1
+    - name: Setup Java JDK
+      uses: actions/setup-java@v1.3.0
+      with:
+        # The Java version to make available on the path. Takes a whole or semver Java version, or 1.x syntax (e.g. 1.8 => Java 8.x)
+        java-version: 13
+    - name: Change Permissions for gradlew
+      run: cd elasticsearch/; chmod +x gradlew
+    - name: Test Modules
+      run: cd elasticsearch/modules/; python3 test.py
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Python environment
+      uses: actions/setup-python@v1.1.1
+    - name: Setup Java JDK
+      uses: actions/setup-java@v1.3.0
+      with:
+        # The Java version to make available on the path. Takes a whole or semver Java version, or 1.x syntax (e.g. 1.8 => Java 8.x)
+        java-version: 13
+    - name: Change Permissions for gradlew
+      run: cd elasticsearch/; chmod +x gradlew
+    - name: Build Modules
+      run: cd elasticsearch/modules/; python3 build.py
